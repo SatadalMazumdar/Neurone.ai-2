@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import CourseDetail from './pages/CourseDetail';
+import Achievers from './pages/Achievers';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses/:courseId" element={<CourseDetail />} />
+            <Route path="/achievers" element={<Achievers />} />
           </Routes>
         </main>
         <Footer />

@@ -291,58 +291,107 @@ export const COURSES: CourseData[] = [
   {
     id: "jenpas",
     title: "JENPAS (UG)",
-    shortDescription: "Expert guidance for paramedical entrance with regular mock tests.",
-    fullDescription: "JENPAS (Joint Entrance for Nursing & Paramedical Admission Services) is the state-level exam for B.Sc Nursing and paramedical courses in West Bengal. Our program prepares you for success, opening doors to top colleges across the state.",
+    shortDescription: "Five-subject JENPAS prep with variable-marking strategy for top Nursing & Paramedical ranks.",
+    fullDescription: "The JENPAS (UG) Paper I is the single mandatory entrance test for high-demand programs like B.Sc. Nursing, B.P.T., and other B.Sc. Paramedical courses. We focus on mastering the five-subject pattern and variable marking scheme so you can secure a top General Merit Rank for government seats.",
     badge: { text: "Nursing & Paramedical", icon: Activity },
     examInfo: [
-      { label: "Mode", value: "Offline" },
+      { label: "Mode", value: "Offline (OMR)" },
       { label: "Duration", value: "90 Minutes" },
-      { label: "Questions", value: "120 MCQs" },
-      { label: "Max Marks", value: "120" }
+      { label: "Questions", value: "100 (Paper I)" },
+      { label: "Max Marks", value: "115" },
+      { label: "Subjects", value: "Physics, Chemistry, Biology, Basic English, Logical Reasoning" }
     ],
     highlights: [
       {
-        title: "Subject Mastery",
+        title: "Integrated Strategy: Balanced Five Subjects",
         description: [
-          "Physics, Chemistry, Biology, English.",
-          "Focus on Human Anatomy & Physiology.",
-          "English grammar and comprehension."
-        ],
-        icon: BookOpen
-      },
-      {
-        title: "Exam Strategy",
-        description: [
-          "Pattern-specific preparation.",
-          "Previous year question analysis.",
-          "Speed training for 120 questions."
+          "Structured plan that balances core sciences with English and Logical Reasoning.",
+          "Ensures no easy marks are left in non-science sections.",
+          "Targets all 100 questions/115 marks for a higher General Merit Rank."
         ],
         icon: Target
       },
       {
-        title: "Biology Focus",
+        title: "Logical & English Edge",
         description: [
-          "In-depth biology teaching.",
-          "Visual learning aids and models.",
-          "Nutrition and health modules."
+          "Dedicated classes for the 40 marks from Basic English and Logical Reasoning.",
+          "Focused drills on series, blood relations, coding-decoding, and grammar/comprehension.",
+          "Leverages these sections as guaranteed score boosters."
+        ],
+        icon: BookOpen
+      },
+      {
+        title: "Variable Marking Mastery",
+        description: [
+          "Category 1: +1 with -0.25 penalty; Category 2: +2 with no negative marking.",
+          "Strategies to identify and prioritize high-value Category 2 questions.",
+          "Mocks mirror question-type distribution for real exam decision-making."
+        ],
+        icon: Zap
+      },
+      {
+        title: "Expert Guidance",
+        description: [
+          "Faculty specialized in medical and allied science entrances.",
+          "Exam-cracking shortcuts tailored to the JENPAS pattern.",
+          "Insights from recent trends for both science and reasoning sections."
+        ],
+        icon: Award
+      },
+      {
+        title: "Doubt Destroyers",
+        description: [
+          "Dedicated channels and structured doubt sessions for rapid resolution.",
+          "One-on-one focus for tricky Physics, Chemistry, or Biology topics.",
+          "No backlog of doubts so preparation momentum stays high."
+        ],
+        icon: Users
+      },
+      {
+        title: "Rank Fuel Study Material",
+        description: [
+          "High-level curated notes and practice banks calibrated to JENPAS difficulty.",
+          "Advanced problems plus challenge sets for top-rank readiness.",
+          "Continuously updated content to match evolving standards."
+        ],
+        icon: TrendingUp
+      },
+      {
+        title: "Supportive Hub",
+        description: [
+          "Mentors who operate as teachers, friends, and family.",
+          "Culture of trust that reduces prep stress and boosts motivation.",
+          "Open feedback loops to keep learning proactive and healthy."
         ],
         icon: Heart
       },
       {
-        title: "Admission Support",
+        title: "Success Circle Mentorship",
         description: [
-          "Application assistance.",
-          "Counseling support.",
-          "Guidance on scholarships."
+          "Direct interactions with Neurone toppers who cracked JENPAS.",
+          "Learn their study plans, time management, and pressure handling.",
+          "Proven success templates to shape your own preparation."
         ],
-        icon: Users
+        icon: GraduationCap
       }
     ],
+    tableData: {
+      title: "JENPAS (UG) Paper I Structure",
+      columns: ["Subject", "Total Questions", "Total Marks", "Category 1 (+1, -0.25)", "Category 2 (+2, No Negative)"],
+      rows: [
+        ["Physics", "20", "25", "15", "5"],
+        ["Chemistry", "20", "25", "15", "5"],
+        ["Biology", "20", "25", "15", "5"],
+        ["Basic English", "20", "20", "20", "0"],
+        ["Logical Reasoning", "20", "20", "20", "0"],
+        ["TOTAL", "100", "115", "85", "15"]
+      ]
+    },
     careers: [
-      { title: "B.Sc Nursing", description: "4-year degree program", icon: Heart },
-      { title: "Lab Technology", description: "Diagnostic sciences", icon: FlaskConical },
-      { title: "Physiotherapy", description: "Rehabilitation therapy", icon: Activity },
-      { title: "Radiology", description: "Imaging technology", icon: Zap }
+      { title: "B.Sc Nursing", description: "4-year program leading to Registered Nurse roles", icon: Heart },
+      { title: "Physiotherapy (B.P.T.)", description: "Rehabilitation and sports therapy careers", icon: Activity },
+      { title: "Medical Lab Technology (B.M.L.T.)", description: "Diagnostics in hospitals and labs", icon: FlaskConical },
+      { title: "Operation Theatre Technology", description: "Surgical support roles across hospitals", icon: Zap }
     ],
     gradient: "from-emerald-500 to-teal-500",
     icon: Activity
@@ -350,58 +399,108 @@ export const COURSES: CourseData[] = [
   {
     id: "anm-gnm",
     title: "ANM / GNM Nursing",
-    shortDescription: "Comprehensive preparation for nursing diploma courses with personalized attention.",
-    fullDescription: "ANM and GNM are diploma-level nursing courses providing a quick pathway to a healthcare career. Our specialized coaching prepares you for entrance exams conducted by various nursing schools and government institutions.",
+    shortDescription: "Six-subject ANM/GNM prep with variable-marking focus for top government ranks.",
+    fullDescription: "The WB ANM & GNM Entrance Exam is the mandatory test for admission to the 3.5-year GNM diploma and 2-year ANM diploma across government and private institutions in West Bengal. We train you to master the six-subject pattern and variable marking so you can secure top ranks for competitive seats.",
     badge: { text: "Diploma Nursing", icon: Stethoscope },
     examInfo: [
-      { label: "ANM", value: "2 Years" },
-      { label: "GNM", value: "3.5 Years" },
-      { label: "Eligibility", value: "10th/12th" },
-      { label: "Career", value: "Fast Track" }
+      { label: "Mode", value: "Offline (OMR)" },
+      { label: "Duration", value: "90 Minutes" },
+      { label: "Questions", value: "100" },
+      { label: "Max Marks", value: "115" },
+      { label: "Subjects", value: "Life Science, Physical Science, English, Maths, GK, Logical Reasoning" }
     ],
     highlights: [
       {
-        title: "Foundation",
+        title: "Integrated Strategy: Six-Subject Synergy",
         description: [
-          "Biology, Science, English, GK.",
-          "Modules for 10th & 12th pass students.",
-          "Basic nursing concepts."
-        ],
-        icon: BookOpen
-      },
-      {
-        title: "Exam Focus",
-        description: [
-          "Prep for various entrance exams.",
-          "Previous year papers from WB institutions.",
-          "Customized mock tests."
+          "Balanced plan across Life Science, Physical Science, Maths, English, GK, and Logical Reasoning.",
+          "Prevents loss of easy marks from 10th-standard Science/Maths.",
+          "Targets all 100 questions/115 marks for competitive GNM ranks."
         ],
         icon: Target
       },
       {
-        title: "Affordable",
+        title: "Life Science Dominance",
         description: [
-          "Budget-friendly fees.",
-          "Flexible batch timings.",
-          "Scholarship guidance."
+          "Deep dive into high-weightage Life Science (Class 9 & 10 base).",
+          "Mastery of Cellular Organization, Diversity of Life Forms, Ecology, and more.",
+          "Designed to secure the decisive 50 marks."
         ],
-        icon: Users
+        icon: BookOpen
       },
       {
-        title: "Practical Exposure",
+        title: "Aptitude & GK Edge",
         description: [
-          "Introduction to patient care.",
-          "Guest lectures by nurses.",
-          "Hospital environment awareness."
+          "Focused prep for 30 marks from English, GK, and Logical Reasoning.",
+          "Drills for coding-decoding, blood relations, and rapid comprehension.",
+          "Saves time for calculation-heavy Physical Science."
+        ],
+        icon: TrendingUp
+      },
+      {
+        title: "Expert Guidance",
+        description: [
+          "Faculty specialized in WB state-level nursing entrances.",
+          "Exam shortcuts tuned to 10th-standard Math and Science patterns.",
+          "Optimized attempt strategy for the 90-minute paper."
+        ],
+        icon: Award
+      },
+      {
+        title: "Doubt Destroyers: Category 2 Focus",
+        description: [
+          "Category 2 (+2, no negative) strategy to maximize the 15 high-value questions.",
+          "Structured doubt channels for instant resolution.",
+          "Keeps momentum high with zero backlog of doubts."
+        ],
+        icon: Zap
+      },
+      {
+        title: "Rank Fuel Material",
+        description: [
+          "Advanced, curated notes and challenge banks calibrated to ANM/GNM level.",
+          "Single reliable source for practice, updated to exam standards.",
+          "Built to deliver top-rank readiness."
+        ],
+        icon: TrendingUp
+      },
+      {
+        title: "Supportive Hub",
+        description: [
+          "Mentor-as-family culture to reduce prep stress and boost motivation.",
+          "Open feedback loops for proactive learning.",
+          "Mental well-being prioritized with academic rigor."
         ],
         icon: Heart
+      },
+      {
+        title: "Success Circle Mentorship",
+        description: [
+          "Interact with Neurone alumni who cracked ANM/GNM with top ranks.",
+          "Borrow their study plans, time management, and pressure-handling tactics.",
+          "Proven success templates to shape your own prep."
+        ],
+        icon: GraduationCap
       }
     ],
+    tableData: {
+      title: "WB ANM & GNM Exam Structure (Paper I)",
+      columns: ["Subject", "Total Questions", "Total Marks", "Category 1 (+1, -0.25)", "Category 2 (+2, No Negative)"],
+      rows: [
+        ["Life Science", "40", "50", "30", "10"],
+        ["Physical Science", "20", "25", "15", "5"],
+        ["Basic English", "15", "15", "15", "0"],
+        ["Mathematics", "10", "10", "10", "0"],
+        ["General Knowledge", "10", "10", "10", "0"],
+        ["Logical Reasoning", "5", "5", "5", "0"],
+        ["TOTAL", "100", "115", "85", "15"]
+      ]
+    },
     careers: [
-      { title: "Hospitals", description: "Staff nurse roles", icon: Stethoscope },
-      { title: "Health Centers", description: "Primary health care", icon: MapPin },
-      { title: "Home Care", description: "Personalized patient care", icon: Heart },
-      { title: "Govt Jobs", description: "Secure employment", icon: Award }
+      { title: "GNM (3.5 Years)", description: "Staff Nurse roles across govt and private hospitals", icon: Stethoscope },
+      { title: "ANM (2 Years)", description: "Community and primary health care roles", icon: Syringe },
+      { title: "Post Basic B.Sc Nursing", description: "Advancement to supervisory and teaching roles", icon: GraduationCap },
+      { title: "Govt & Private Opportunities", description: "Hospitals, PHCs, NGOs, and international placements", icon: Award }
     ],
     gradient: "from-orange-500 to-amber-500",
     icon: Syringe

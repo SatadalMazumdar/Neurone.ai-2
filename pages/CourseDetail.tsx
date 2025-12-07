@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { COURSES } from '../data/content';
 import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const CourseDetail: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
+  const navigate = useNavigate();
   const course = COURSES.find(c => c.id === courseId);
 
   useEffect(() => {
@@ -71,18 +72,21 @@ const CourseDetail: React.FC = () => {
 
               {/* Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {course.examInfo.map((info, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 + (i * 0.1) }}
-                    className="p-4 bg-slate-50 rounded-xl border border-slate-100"
-                  >
-                    <p className="text-xs text-slate-500 uppercase font-semibold mb-1">{info.label}</p>
-                    <p className="text-slate-900 font-bold">{info.value}</p>
-                  </motion.div>
-                ))}
+                {course.examInfo.map((info, i) => {
+                  const isSubjects = info.label.toLowerCase() === 'subjects';
+                  return (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2 + (i * 0.1) }}
+                      className={`p-4 bg-slate-50 rounded-xl border border-slate-100 ${isSubjects ? 'col-span-2 md:col-span-4' : ''}`}
+                    >
+                      <p className="text-xs text-slate-500 uppercase font-semibold mb-1">{info.label}</p>
+                      <p className="text-slate-900 font-bold">{info.value}</p>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
@@ -205,7 +209,7 @@ const CourseDetail: React.FC = () => {
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/', { state: { scrollTo: 'contact' } })}
                 className="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold shadow-lg shadow-primary-500/20 transition-all flex items-center justify-center gap-2"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, Brain } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import NeuroneLogo from '../Assets/Neurone Logo.png';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,19 +59,16 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white ${scrolled ? 'shadow-md py-3' : 'shadow-sm py-5'}`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 group">
-          <motion.div 
-            whileHover={{ rotate: 15, scale: 1.1 }}
-            className="text-primary-600"
-          >
-            <Brain className="w-9 h-9" strokeWidth={2.5} />
-          </motion.div>
-          <span className="text-2xl font-bold font-display text-primary-600 tracking-tight uppercase group-hover:text-primary-700 transition-colors">
-            Neurone
-          </span>
+          <motion.img
+            whileHover={{ scale: 1.05 }}
+            src={NeuroneLogo}
+            alt="Neurone logo"
+            className="h-12 w-auto max-w-[180px] object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}

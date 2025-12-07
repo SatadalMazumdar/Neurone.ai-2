@@ -1,6 +1,7 @@
 import React from 'react';
-import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Brain } from 'lucide-react';
+import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import NeuroneLogo from '../Assets/Neurone Logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -14,10 +15,12 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center text-white">
-                <Brain className="w-6 h-6" />
-              </div>
-              <span className="text-2xl font-bold font-display text-white uppercase tracking-tight">Neurone</span>
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                src={NeuroneLogo}
+                alt="Neurone logo"
+                className="h-12 w-auto max-w-[180px] object-contain"
+              />
             </div>
             <p className="text-slate-400 mb-4 leading-relaxed">
               Empowering students in Kakdwip, Sundarban, and Kolkata to achieve their medical and engineering dreams through quality coaching and mentorship.

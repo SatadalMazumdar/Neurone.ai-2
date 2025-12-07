@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Play, CheckCircle2, TrendingUp, Users, BookOpen, ChevronRight, MapPin, Phone, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { COURSES, ACHIEVERS } from '../data/content';
@@ -19,10 +19,26 @@ const staggerContainer = {
 };
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | null;
+    const targetId = (location.hash && location.hash.replace('#', '')) || state?.scrollTo;
+    if (!targetId) return;
+
+    const timeout = window.setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 75);
+
+    return () => window.clearTimeout(timeout);
+  }, [location]);
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-slate-50 overflow-hidden py-20 lg:py-0">
+      <section className="relative min-h-[96vh] flex items-center bg-slate-50 overflow-hidden py-20 lg:py-0">
         {/* Abstract Background */}
         <div className="absolute inset-0 z-0">
           <motion.div 
@@ -85,24 +101,6 @@ const Home: React.FC = () => {
                   Watch Demo
                 </motion.button>
               </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid grid-cols-2 gap-4 pt-4 pb-8">
-                {[
-                  { label: "Affordable Fees", icon: CheckCircle2 },
-                  { label: "Expert Faculty", icon: Users },
-                  { label: "Weekly Tests", icon: TrendingUp },
-                  { label: "Study Material", icon: BookOpen },
-                ].map((feature, i) => (
-                  <motion.div 
-                    key={i} 
-                    variants={fadeInUp}
-                    className="flex items-center gap-2 text-slate-600 font-medium"
-                  >
-                    <feature.icon className="w-5 h-5 text-secondary-500" />
-                    {feature.label}
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
 
             <motion.div 
@@ -120,25 +118,24 @@ const Home: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
                 
-                {/* Floating Card */}
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
+                <motion.div
+                  initial={{ y: 16, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur rounded-2xl p-6 shadow-xl border border-slate-100"
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="absolute inset-x-6 bottom-6 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-slate-100"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="flex -space-x-4">
-                      {[1,2,3].map(i => (
-                        <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                          <img src={`https://i.pravatar.cc/150?img=${i+10}`} alt="Student" className="w-full h-full object-cover" />
-                        </div>
-                      ))}
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-900">Join 500+ Students</p>
-                      <p className="text-xs text-slate-500">Achieve your goals with us</p>
-                    </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { label: "Affordable Fees", icon: CheckCircle2 },
+                      { label: "Expert Faculty", icon: Users },
+                      { label: "Weekly Tests", icon: TrendingUp },
+                      { label: "Study Material", icon: BookOpen },
+                    ].map((feature, i) => (
+                      <div key={i} className="flex items-center gap-2 text-slate-700 text-sm font-semibold">
+                        <feature.icon className="w-4 h-4 text-secondary-500" />
+                        <span className="text-slate-600 font-medium">{feature.label}</span>
+                      </div>
+                    ))}
                   </div>
                 </motion.div>
               </div>
@@ -230,6 +227,7 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/achievers')}
               className="px-6 py-3 border border-slate-700 hover:bg-slate-800 rounded-full text-white transition-colors"
             >
               View All Results
