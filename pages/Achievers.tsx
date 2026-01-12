@@ -110,7 +110,6 @@ const Achievers: React.FC = () => {
                 </div>
               </div>
               <h3 className="font-bold text-lg mb-1">{student.name}</h3>
-              <p className="text-primary-300 text-sm font-medium mb-2">{student.exam}</p>
               <p className="text-slate-300 text-sm leading-relaxed">{student.note}</p>
             </motion.div>
           ))}

@@ -509,35 +509,131 @@ export const COURSES: CourseData[] = [
 
 export const ACHIEVERS: Achiever[] = [
   {
-    name: "Priya Sharma",
-    exam: "NEET 2024",
-    note: "Secured admission in Government Medical College",
-    rank: "AIR 2,345",
+    name: "Pratyush Pradhan",
+    exam: "Electrical Engineering",
+    note: "Purulia Govt. Engineering College",
+    rank: "Electrical Engineering",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-blue-500"
+  },
+  {
+    name: "Arijit Maity",
+    exam: "Computer Science Engineering",
+    note: "Ghani Khan Choudhury Institute of Engineering & Technology Central Govt",
+    rank: "Computer Science",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-blue-500"
+  },
+  {
+    name: "Sunandita Bhunia",
+    exam: "Electrical Engineering",
+    note: "Cooch Behar Govt Engineering College",
+    rank: "Electrical Engineering",
+    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-blue-500"
+  },
+  {
+    name: "Soumyaditta Patra",
+    exam: "Pharmacy",
+    note: "Jalpaiguri Govt. Engineering College",
+    rank: "Pharmacy",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-orange-500"
+  },
+  {
+    name: "Sandipta Das",
+    exam: "B.Sc Nursing",
+    note: "Calcutta National Medical College & Hospital",
+    rank: "B.Sc Nursing",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-rose-500"
+  },
+  {
+    name: "Shriparna Panda",
+    exam: "B.Sc Nursing",
+    note: "NRS Medical College & Hospital",
+    rank: "B.Sc Nursing",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-rose-500"
+  },
+  {
+    name: "Rajhree Bhandari",
+    exam: "B.Sc Nursing",
+    note: "Matangini Govt. CON. Tamluk DH",
+    rank: "B.Sc Nursing",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-rose-500"
+  },
+  {
+    name: "Sneha Barman",
+    exam: "B.Sc Nursing",
+    note: "Diamond Harbour Medical College & Hospital",
+    rank: "B.Sc Nursing",
     image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     color: "bg-rose-500"
   },
   {
-    name: "Rahul Das",
-    exam: "JEE Main 2024",
-    note: "Qualified for JEE Advanced",
-    rank: "AIR 5,678",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    color: "bg-blue-500"
+    name: "Munmun Das",
+    exam: "ANM",
+    note: "Kakdwip S.D Hospital",
+    rank: "ANM",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-pink-500"
   },
   {
-    name: "Ananya Mondal",
-    exam: "WBJEE 2024",
-    note: "Selected for Engineering at Jadavpur University",
-    rank: "Rank 234",
+    name: "Rittika Maity",
+    exam: "GNM",
+    note: "Jalpaiguri Govt. Medical College & Hospital",
+    rank: "GNM",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    color: "bg-indigo-500"
+    color: "bg-pink-500"
   },
   {
-    name: "Sourav Biswas",
-    exam: "JENPAS 2024",
-    note: "Admitted to B.Sc Nursing program",
-    rank: "Rank 89",
+    name: "Ananya Das",
+    exam: "GNM",
+    note: "Central Govt. Hospital Kalla",
+    rank: "GNM",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-pink-500"
+  },
+  {
+    name: "Rimi Das",
+    exam: "GNM",
+    note: "M.R. Bangur Hospital",
+    rank: "GNM",
+    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-pink-500"
+  },
+  {
+    name: "Deep Das",
+    exam: "B.M.L.T",
+    note: "Kazi Nazrul University (Govt.)",
+    rank: "B.M.L.T",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     color: "bg-emerald-500"
+  },
+  {
+    name: "Tanushree Maity",
+    exam: "D.M.L.T",
+    note: "NRS Medical College & Hospital",
+    rank: "D.M.L.T",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-emerald-500"
+  },
+  {
+    name: "Ankit Khatua",
+    exam: "D.M.L.T",
+    note: "NRS Medical College & Hospital",
+    rank: "D.M.L.T",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-emerald-500"
+  },
+  {
+    name: "Priyul Mondal",
+    exam: "BCA",
+    note: "MAKAUT",
+    rank: "BCA",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    color: "bg-indigo-500"
   }
 ];
