@@ -17,49 +17,13 @@ const staggerContainer = {
   }
 };
 
-const extraAchievers = [
-  {
-    name: "Meera Sen",
-    exam: "NEET 2023",
-    note: "Joined MBBS program at a top government college",
-    rank: "AIR 3,210",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=60",
-    color: "bg-amber-500"
-  },
-  {
-    name: "Arjun Ghosh",
-    exam: "JEE Main 2023",
-    note: "Secured CSE at NIT Durgapur",
-    rank: "AIR 8,912",
-    image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=60",
-    color: "bg-cyan-500"
-  },
-  {
-    name: "Aisha Khan",
-    exam: "NEET 2022",
-    note: "Pursuing BDS at a reputed dental college",
-    rank: "AIR 4,876",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=60",
-    color: "bg-rose-400"
-  },
-  {
-    name: "Riya Patra",
-    exam: "WBJEE 2023",
-    note: "Admitted to Engineering at JU",
-    rank: "Rank 311",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=60",
-    color: "bg-indigo-400"
-  }
-];
-
-const allAchievers = [...ACHIEVERS, ...extraAchievers];
 
 const Achievers: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <div className="bg-slate-900 text-white pt-24 pb-20">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 mt-12">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -90,7 +54,7 @@ const Achievers: React.FC = () => {
           animate="animate"
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {allAchievers.map((student, idx) => (
+          {ACHIEVERS.map((student, idx) => (
             <motion.div
               key={`${student.name}-${idx}`}
               variants={fadeInUp}

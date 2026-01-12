@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ArrowRight, Play, CheckCircle2, TrendingUp, Users, BookOpen, ChevronRight, MapPin, Phone, Mail } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle2, TrendingUp, Users, BookOpen, ChevronRight, MapPin, Phone, Mail, Send, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { COURSES, ACHIEVERS } from '../data/content';
+import emailjs from '@emailjs/browser';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -22,6 +23,16 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Form state
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phone: '',
+    course: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   useEffect(() => {
     const state = location.state as { scrollTo?: string } | null;
     const targetId = (location.hash && location.hash.replace('#', '')) || state?.scrollTo;
@@ -34,6 +45,83 @@ const Home: React.FC = () => {
 
     return () => window.clearTimeout(timeout);
   }, [location]);
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // OPTION 1: Using Web3Forms (Simpler - get free access key from https://web3forms.com)
+      const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // Get from https://web3forms.com
+      
+      const formPayload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        email: 'neurone.institute.dev@gmail.com',
+        subject: `New Inquiry from ${formData.fullName}`,
+        name: formData.fullName,
+        phone: formData.phone,
+        course: formData.course,
+        message: formData.message,
+        from_name: 'Neurone.in Website',
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formPayload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ fullName: '', phone: '', course: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+
+      /* OPTION 2: Using EmailJS (More customizable - requires EmailJS account setup)
+      const serviceId = 'YOUR_SERVICE_ID';
+      const templateId = 'YOUR_TEMPLATE_ID';
+      const publicKey = 'YOUR_PUBLIC_KEY';
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          to_email: 'neurone.institute.dev@gmail.com',
+          from_name: formData.fullName,
+          phone: formData.phone,
+          course: formData.course,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      setSubmitStatus('success');
+      setFormData({ fullName: '', phone: '', course: '', message: '' });
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+      */
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="pt-16">
@@ -241,7 +329,7 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {ACHIEVERS.map((student, idx) => (
+            {ACHIEVERS.slice(0, 4).map((student, idx) => (
               <motion.div 
                 key={idx} 
                 variants={fadeInUp}
@@ -269,102 +357,147 @@ const Home: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-slate-50 relative">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-24 bg-gradient-to-br from-slate-50 via-primary-50/20 to-slate-50 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.2, 0.3]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-200/40 to-transparent rounded-full blur-3xl"
+        />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-primary-600 font-semibold tracking-wider uppercase text-sm">Connect With Us</span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mt-2 mb-4">Get in Touch</h2>
+            <p className="text-slate-600 text-lg">Have questions about our courses or admission process? We're here to help you achieve your dreams.</p>
+          </motion.div>
+
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100"
+            className="max-w-5xl mx-auto"
           >
-            <div className="grid lg:grid-cols-2">
-              <div className="p-8 md:p-12 lg:p-16 bg-primary-900 text-white relative overflow-hidden">
-                <div className="relative z-10">
-                  <h2 className="text-3xl font-display font-bold mb-6">Get in Touch</h2>
-                  <p className="text-primary-200 mb-12 text-lg">Have questions about our courses or admission process? We're here to help you.</p>
-                  
-                  <div className="space-y-8">
-                    {[
-                      { 
-                        Icon: MapPin, 
-                        title: "Visit Us", 
-                        text: "Kakdwip, Nayapara College Road,\nSouth 24 Pgs - 743347", 
-                        sub: "" 
-                      },
-                      { 
-                        Icon: Phone, 
-                        title: "Call Us", 
-                        text: "+91 98328 64275\n+91 96471 01618\n+91 99335 01844", 
-                        sub: "Mon-Sat, 9am - 8pm" 
-                      },
-                      { 
-                        Icon: Mail, 
-                        title: "Email Us", 
-                        text: "contact@neurone.in", 
-                        sub: "" 
-                      }
-                    ].map((item, i) => (
-                      <motion.div 
-                        key={i}
-                        initial={{ x: -20, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-start gap-4"
-                      >
-                        <div className="w-12 h-12 bg-primary-800 rounded-xl flex items-center justify-center shrink-0">
-                          <item.Icon className="w-6 h-6 text-secondary-400" />
+            <div className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden border border-slate-100 relative">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary-50/50 via-secondary-50/50 to-transparent rounded-full blur-3xl opacity-60 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-indigo-50/50 via-primary-50/50 to-transparent rounded-full blur-3xl opacity-60 -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+              
+              <div className="relative z-10 p-[28px] flex flex-col gap-0 h-fit">
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+                  {[
+                    { 
+                      Icon: MapPin, 
+                      title: "Visit Us", 
+                      text: "Kakdwip, Nayapara College Road,\nSouth 24 Pgs - 743347",
+                      color: "text-primary-600",
+                      bg: "bg-primary-50",
+                      border: "border-primary-100",
+                      className: ""
+                    },
+                    { 
+                      Icon: Phone, 
+                      title: "Call Us", 
+                      text: "+91 98328 64275\n+91 96471 01618\n+91 99335 01844", 
+                      sub: "Mon-Sat, 9am - 8pm",
+                      color: "text-secondary-600",
+                      bg: "bg-secondary-50",
+                      border: "border-secondary-100",
+                      className: ""
+                    },
+                    { 
+                      Icon: Mail, 
+                      title: "Email Us", 
+                      text: "contact@neurone.in",
+                      color: "text-slate-600",
+                      bg: "bg-slate-50",
+                      border: "border-slate-200",
+                      className: "md:col-span-2",
+                      isWide: true
+                    }
+                  ].map((item, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15, duration: 0.5 }}
+                      className={`relative group h-full ${item.className}`}
+                    >
+                      <div className={`flex flex-col h-full items-center text-center p-8 rounded-3xl transition-all duration-300 bg-slate-50/50 border ${item.border} hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 ${item.isWide ? 'md:flex-row md:text-left md:justify-start md:gap-8' : ''}`}>
+                        <motion.div 
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-6 md:mb-0 shadow-sm group-hover:shadow-md transition-all duration-300 shrink-0`}
+                        >
+                          <item.Icon className={`w-7 h-7 ${item.color}`} />
+                        </motion.div>
+                        
+                        <div className="flex-grow">
+                          <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                          
+                          {item.isWide ? (
+                            <div className={`${!item.sub ? 'flex flex-col gap-0 h-fit' : 'grid md:grid-cols-3 gap-4 items-center'}`}>
+                               <p className={`text-slate-600 whitespace-pre-line leading-relaxed text-base ${!item.sub ? 'md:col-span-3' : ''}`}>{item.text}</p>
+                               {item.sub && (
+                                 <div className="md:col-span-2 flex md:justify-end">
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold group-hover:bg-slate-50 transition-colors">
+                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    {item.sub}
+                                  </span>
+                                 </div>
+                               )}
+                            </div>
+                          ) : (
+                            <>
+                              <p className="text-slate-600 whitespace-pre-line leading-relaxed text-base mb-4">{item.text}</p>
+                              {item.sub && (
+                                <div className="mt-auto pt-2">
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold group-hover:bg-slate-50 transition-colors">
+                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    {item.sub}
+                                  </span>
+                                </div>
+                              )}
+                            </>
+                          )}
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-lg mb-1">{item.title}</h4>
-                          <p className="text-primary-100 whitespace-pre-line leading-relaxed">{item.text}</p>
-                          {item.sub && <p className="text-primary-200 text-sm mt-1">{item.sub}</p>}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-                
-                {/* Decoration */}
-                <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary-700 rounded-full blur-3xl opacity-50"></div>
-              </div>
 
-              <div className="p-8 md:p-12 lg:p-16">
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-slate-700">Full Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-slate-700">Phone Number</label>
-                      <input type="tel" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="+91 ..." />
-                    </div>
+                {/* Quick action button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 flex justify-center"
+                >
+                  <div className="p-1.5 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full">
+                    <motion.a
+                      href="tel:+919832864275"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-bold shadow-lg shadow-primary-200 hover:shadow-xl transition-all relative overflow-hidden group"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                      <Phone className="w-5 h-5 relative z-10" />
+                      <span className="relative z-10">Call Now for Admission</span>
+                    </motion.a>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">Course Interested In</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all bg-slate-50 focus:bg-white">
-                      <option>Select a course</option>
-                      {COURSES.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">Message</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tell us about your goals..."></textarea>
-                  </div>
-
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit" 
-                    className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold shadow-lg shadow-primary-500/20 transition-all"
-                  >
-                    Send Inquiry
-                  </motion.button>
-                </form>
+                </motion.div>
               </div>
             </div>
           </motion.div>

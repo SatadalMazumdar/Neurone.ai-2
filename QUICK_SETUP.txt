@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════
+    🚀 CONTACT FORM - QUICK SETUP (5 MINUTES)
+═══════════════════════════════════════════════════════
+
+📧 Emails will be sent to: neurone.institute.dev@gmail.com
+
+──────────────────────────────────────────────────────
+
+STEP 1: Get Access Key
+├─ Go to: https://web3forms.com
+├─ Enter: neurone.institute.dev@gmail.com  
+├─ Click: "Get Access Key"
+└─ Copy the key (looks like: abc123-def456-ghi789)
+
+──────────────────────────────────────────────────────
+
+STEP 2: Verify Email
+├─ Open: neurone.institute.dev@gmail.com
+├─ Find: Email from Web3Forms
+└─ Click: Verification link
+
+──────────────────────────────────────────────────────
+
+STEP 3: Update Code
+├─ Open: pages/Home.tsx
+├─ Find: Line ~52
+├─ Change:
+│   FROM: const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+│   TO:   const WEB3FORMS_ACCESS_KEY = 'your-actual-key';
+└─ Save file
+
+──────────────────────────────────────────────────────
+
+STEP 4: Test
+├─ Run: bun run dev
+├─ Fill: Contact form
+├─ Submit
+└─ Check: neurone.institute.dev@gmail.com inbox
+
+──────────────────────────────────────────────────────
+
+✅ Done! Your contact form is now working.
+
+Need help? See EMAIL_SETUP.md for detailed instructions.
