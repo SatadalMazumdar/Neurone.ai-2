@@ -18,6 +18,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { CourseData, Achiever } from '../types';
+import { candidateImages } from '../Assets/candidateImages';
 
 export const COURSES: CourseData[] = [
   {
@@ -513,7 +514,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "Electrical Engineering",
     note: "Purulia Govt. Engineering College",
     rank: "Electrical Engineering",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.pratyushPradhan,
     color: "bg-blue-500"
   },
   {
@@ -521,7 +522,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "Computer Science Engineering",
     note: "Ghani Khan Choudhury Institute of Engineering & Technology Central Govt",
     rank: "Computer Science",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.arijitMaity,
     color: "bg-blue-500"
   },
   {
@@ -529,7 +530,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "Electrical Engineering",
     note: "Cooch Behar Govt Engineering College",
     rank: "Electrical Engineering",
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.sunanditaBhunia,
     color: "bg-blue-500"
   },
   {
@@ -537,7 +538,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "Pharmacy",
     note: "Jalpaiguri Govt. Engineering College",
     rank: "Pharmacy",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.soumyadittaPatra,
     color: "bg-orange-500"
   },
   {
@@ -545,7 +546,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "B.Sc Nursing",
     note: "Calcutta National Medical College & Hospital",
     rank: "B.Sc Nursing",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.sandiptaDas,
     color: "bg-rose-500"
   },
   {
@@ -553,7 +554,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "B.Sc Nursing",
     note: "NRS Medical College & Hospital",
     rank: "B.Sc Nursing",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.shriparnaPanda,
     color: "bg-rose-500"
   },
   {
@@ -561,7 +562,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "B.Sc Nursing",
     note: "Matangini Govt. CON. Tamluk DH",
     rank: "B.Sc Nursing",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.rajhreeBhandari,
     color: "bg-rose-500"
   },
   {
@@ -569,7 +570,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "B.Sc Nursing",
     note: "Diamond Harbour Medical College & Hospital",
     rank: "B.Sc Nursing",
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.snehaBarman,
     color: "bg-rose-500"
   },
   {
@@ -577,7 +578,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "ANM",
     note: "Kakdwip S.D Hospital",
     rank: "ANM",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.munmunDas,
     color: "bg-pink-500"
   },
   {
@@ -585,7 +586,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "GNM",
     note: "Jalpaiguri Govt. Medical College & Hospital",
     rank: "GNM",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.rittikaMaity,
     color: "bg-pink-500"
   },
   {
@@ -593,7 +594,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "GNM",
     note: "Central Govt. Hospital Kalla",
     rank: "GNM",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.ananyaDas,
     color: "bg-pink-500"
   },
   {
@@ -601,7 +602,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "GNM",
     note: "M.R. Bangur Hospital",
     rank: "GNM",
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.rimiDas,
     color: "bg-pink-500"
   },
   {
@@ -609,7 +610,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "B.M.L.T",
     note: "Kazi Nazrul University (Govt.)",
     rank: "B.M.L.T",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.deepDas,
     color: "bg-emerald-500"
   },
   {
@@ -617,7 +618,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "D.M.L.T",
     note: "NRS Medical College & Hospital",
     rank: "D.M.L.T",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.tanushreeMaity,
     color: "bg-emerald-500"
   },
   {
@@ -625,7 +626,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "D.M.L.T",
     note: "NRS Medical College & Hospital",
     rank: "D.M.L.T",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.ankitKhatua,
     color: "bg-emerald-500"
   },
   {
@@ -633,7 +634,7 @@ export const ACHIEVERS: Achiever[] = [
     exam: "BCA",
     note: "MAKAUT",
     rank: "BCA",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: candidateImages.priyulMondal,
     color: "bg-indigo-500"
   }
 ];
